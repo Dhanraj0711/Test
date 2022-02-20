@@ -1,6 +1,6 @@
 package com.example.applicationperminssions.model
 
 /**
- * This is for getting Data
+ * Create Dao
  */
 class NoteModel : ArrayList<NoteModelItem>()
