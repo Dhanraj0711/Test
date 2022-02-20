@@ -1,6 +1,6 @@
 package com.example.applicationperminssions.model
 
 /**
- * Create Dao
+ *  MARK: Create Model class for Room Dao
  */
 class NoteModel : ArrayList<NoteModelItem>()
