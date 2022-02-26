@@ -33,7 +33,9 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:screenOrientation="fullSensor"></activity>
+            android:screenOrientation="unspecified">
+
+        </activity>
     </application>
 
 </manifest>

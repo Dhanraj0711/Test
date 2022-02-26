@@ -12,10 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.applicationperminssions.MyAdapter
 import com.example.applicationperminssions.databinding.FragmentSplashScreenBinding
 import com.example.applicationperminssions.viewmodel.HomeViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class HomeScreenFragment : Fragment() {
 
@@ -41,13 +37,17 @@ class HomeScreenFragment : Fragment() {
 //        homeViewModel.fetch()
         homeViewModel.repoListLive.observe(requireActivity()) {
             if (it.isNotEmpty() ) {
+
+                val ad=MyAdapter(it)
+
 //            binding.textView2.text=it.toString()
-                binding.rvNoteList.setHasFixedSize(true)
-                binding.rvNoteList.layoutManager = LinearLayoutManager(requireContext())
-                binding.rvNoteList.adapter = MyAdapter(it)
+//                binding.rvNoteList.setHasFixedSize(true)
+//                binding.rvNoteList.layoutManager = LinearLayoutManager(requireContext())
+                binding.rvNoteList.adapter = ad
                 Toast.makeText(requireContext(), ""+homeViewModel.statusMessage, Toast.LENGTH_SHORT).show()
                 Log.e("Worked MSG", "" + homeViewModel.statusMessage)
 
+                ad.updateList(it)
                 Log.e("Worked ", "" + it.toString())
             } else {
                 Toast.makeText(requireContext(), ""+homeViewModel.statusMessage, Toast.LENGTH_SHORT).show()

@@ -1,23 +1,17 @@
 package com.example.applicationperminssions.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.applicationperminssions.model.NoteModel
-import com.example.applicationperminssions.networkcall.NetworkResponse
-import com.example.applicationperminssions.networkcall.RetrofitCall
+import com.example.applicationperminssions.model.NoteModelItem
 import com.example.applicationperminssions.repository.HomeRepository
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class HomeViewModel : ViewModel() {
 
-    private var repository: HomeRepository? = null
-    lateinit var noteListData: MutableLiveData<NetworkResponse>
+    //    private var repository: HomeRepository? = null
+//    private lateinit var noteListData: MutableLiveData<NetworkResponse>
     var statusMessage: String? = null
 
-    val repoListLive = MutableLiveData<NoteModel>()
+    val repoListLive = MutableLiveData<List<NoteModelItem>>()
     fun fetch() {
         HomeRepository.getInstanc().getRepo { isSuccess, response, message ->
             if (isSuccess) {
@@ -38,10 +32,10 @@ class HomeViewModel : ViewModel() {
 //        }
 //    }
 
-    fun getNoteList() {
-        repository?.getAllNotes()
-        noteListData = repository!!.noteList
-    }
+//    fun getNoteList() {
+//        repository?.getAllNotes()
+//        noteListData = repository!!.noteList
+//    }
 
 //    fun getAllNotes() {
 //        RetrofitCall.apiInterface.getNoteList().enqueue(object : Callback<List<NoteModelItem>> {
@@ -56,18 +50,18 @@ class HomeViewModel : ViewModel() {
 //        })
 //    }
 
-    fun getAllNotes() {
-        RetrofitCall.apiInterface.getNoteList().enqueue(object : Callback<NoteModel> {
-            override fun onResponse(call: Call<NoteModel>, response: Response<NoteModel>) {
-                val list = response.body()
-                noteListData.postValue(list?.let { NetworkResponse.GetNoteList(it) })
-            }
-
-            override fun onFailure(call: Call<NoteModel>, t: Throwable) {
-                noteListData.postValue(NetworkResponse.Error(t.toString()))
-                Log.e("ERROR :=>", "" + t.toString())
-            }
-        })
-    }
+//    fun getAllNotes() {
+//        RetrofitCall.apiInterface.getNoteList().enqueue(object : Callback<NoteModel> {
+//            override fun onResponse(call: Call<NoteModel>, response: Response<NoteModel>) {
+//                val list = response.body()
+//                noteListData.postValue(list?.let { NetworkResponse.GetNoteList(it) })
+//            }
+//
+//            override fun onFailure(call: Call<NoteModel>, t: Throwable) {
+//                noteListData.postValue(NetworkResponse.Error(t.toString()))
+//                Log.e("ERROR :=>", "" + t.toString())
+//            }
+//        })
+//    }
 
 }
