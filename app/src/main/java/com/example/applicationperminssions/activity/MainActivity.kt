@@ -1,4 +1,4 @@
-package com.example.applicationperminssions
+package com.example.applicationperminssions.activity
 
 import android.Manifest
 import android.content.pm.PackageManager

@@ -1,4 +1,4 @@
-package com.example.applicationperminssions
+package com.example.applicationperminssions.utils
 
 enum class Status {
     SUCCESS,ERROR,LOADING

@@ -1,6 +1,8 @@
 package com.example.applicationperminssions.fragment
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +10,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.applicationperminssions.MyAdapter
+import androidx.navigation.fragment.findNavController
+import com.example.applicationperminssions.adapter.MyAdapter
+import com.example.applicationperminssions.R
 import com.example.applicationperminssions.databinding.FragmentSplashScreenBinding
 import com.example.applicationperminssions.viewmodel.HomeViewModel
 
@@ -28,6 +31,11 @@ class HomeScreenFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentSplashScreenBinding.inflate(layoutInflater, container, false)
 
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            findNavController().navigate(R.id.action_splashScreenFragment_to_loginFragment)
+        }, 2000)
+
 //        getNoteList()
 
 //        CoroutineScope(Dispatchers.IO) {}
@@ -36,21 +44,26 @@ class HomeScreenFragment : Fragment() {
         Log.e(">>>>>>>>>>>>>>>>>>>", "" + homeViewModel.fetch().toString())
 //        homeViewModel.fetch()
         homeViewModel.repoListLive.observe(requireActivity()) {
-            if (it.isNotEmpty() ) {
+            if (it.isNotEmpty()) {
 
-                val ad=MyAdapter(it)
+                val ad = MyAdapter(it)
 
 //            binding.textView2.text=it.toString()
 //                binding.rvNoteList.setHasFixedSize(true)
 //                binding.rvNoteList.layoutManager = LinearLayoutManager(requireContext())
                 binding.rvNoteList.adapter = ad
-                Toast.makeText(requireContext(), ""+homeViewModel.statusMessage, Toast.LENGTH_SHORT).show()
+
+//                ad.itemClickListener.apply {
+//                    Toast.makeText(requireContext(), ""+it, Toast.LENGTH_SHORT).show()
+//                }
+
+                Toast.makeText(requireContext(), "" + homeViewModel.statusMessage, Toast.LENGTH_SHORT).show()
                 Log.e("Worked MSG", "" + homeViewModel.statusMessage)
 
-                ad.updateList(it)
+//                ad.updateList(it)
                 Log.e("Worked ", "" + it.toString())
             } else {
-                Toast.makeText(requireContext(), ""+homeViewModel.statusMessage, Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "" + homeViewModel.statusMessage, Toast.LENGTH_SHORT).show()
                 Log.e("Failed", "" + it.toString())
                 Log.e("Failed MSG", "" + homeViewModel.statusMessage)
 

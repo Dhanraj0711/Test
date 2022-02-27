@@ -1,6 +1,6 @@
 package com.example.applicationperminssions.networkcall
 
-import com.example.applicationperminssions.Status
+import com.example.applicationperminssions.utils.Status
 import com.example.applicationperminssions.model.NoteModelItem
 
 sealed class NetworkResponse {

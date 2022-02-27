@@ -1,4 +1,4 @@
-package com.example.applicationperminssions
+package com.example.applicationperminssions.ui
 
 import android.content.Context
 import android.graphics.Canvas
