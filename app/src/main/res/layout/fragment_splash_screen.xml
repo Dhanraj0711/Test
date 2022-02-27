@@ -5,10 +5,6 @@
 
     <data>
 
-        <variable
-            name="sm"
-            type="com.example.applicationperminssions.viewmodel.LoginViewModel" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

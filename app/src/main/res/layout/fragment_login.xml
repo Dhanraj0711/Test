@@ -1,22 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:bind="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
-            name="c"
-            type="com.example.applicationperminssions.fragment.LoginFragment" />
-
-        <variable
             name="loginModel"
             type="com.example.applicationperminssions.viewmodel.LoginViewModel" />
-
-        <variable
-            name="user"
-            type="com.example.applicationperminssions.model.UserData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -81,7 +72,6 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            bind:sm="@{loginModel}"
             android:layout_marginTop="32dp"
             android:text="@{loginModel.user.toString()}"
             app:layout_constraintEnd_toEndOf="parent"

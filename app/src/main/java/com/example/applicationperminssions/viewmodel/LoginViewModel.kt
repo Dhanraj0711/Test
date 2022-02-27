@@ -14,9 +14,7 @@ class LoginViewModel : ViewModel() {
 
     var emailAddress = MutableLiveData<String>()
     var password = MutableLiveData<String>()
-
     var userMutableLiveData: MutableLiveData<UserData>? = null
-
 
     fun getUser(): MutableLiveData<UserData>? {
         if (userMutableLiveData == null) {
@@ -24,7 +22,6 @@ class LoginViewModel : ViewModel() {
         }
         return userMutableLiveData
     }
-
 
     fun userLogin() {
         RetrofitCall.apiInterface.login(emailAddress.value!!, password.value!!)
@@ -35,9 +32,6 @@ class LoginViewModel : ViewModel() {
                             userMutableLiveData?.value = response.body()
                             emailAddress.value = ""
                             password.value = ""
-
-                            val r = ""
-//                            NetworkResponse.Resource.success(response.body()!!)
                         }
                     }
                 }
@@ -47,5 +41,4 @@ class LoginViewModel : ViewModel() {
                 }
             })
     }
-
 }
